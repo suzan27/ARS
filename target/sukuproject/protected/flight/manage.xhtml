@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="flightManage" prependId="false">
+                <p:panel style="border: none;" id="flightManage_Panel">
+                    <f:facet name="header">
+                        <label>Flight Manage</label>
+                    </f:facet> 
+                    <h:panelGrid columns="3"  style="border: none;" id="flightManage_panelgrid">
+                        <h:outputLabel id="lblFlightNumber" value="Flight Number" rendered="true" for="flightNumber"/>
+                        <h:inputText id="flightNumber" value="#{flightController.flight.flightNo}" />
+                        <h:message id="inflightNumber" for="flightNumber"/>
+
+                        <h:outputLabel id="noOfSeat" value="Number Of Seat" rendered="true" for="noSeat"/>
+                        <h:inputText id="noSeat" value="#{flightController.flight.noOfSeats}" />
+                        <h:message id="infnoSeat" for="noSeat"/>
+
+                        <h:outputLabel id="lblDept" value="Flight Number" rendered="true" for="dept"/>
+                        <h:inputText id="dept" value="#{flightController.flight.depatureFrom}" />
+                        <h:message id="indept" for="dept"/>
+
+                        <h:outputLabel id="lblArri" value="Flight Number" rendered="true" for="arriv"/>
+                        <h:inputText id="arriv" value="#{flightController.flight.arrivalTo}" />
+                        <h:message id="inarriv" for="arriv"/>
+
+                        <h:commandButton id="saveButton" action="#{flightController.createFlight()}" value="Save"/>
+                            
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

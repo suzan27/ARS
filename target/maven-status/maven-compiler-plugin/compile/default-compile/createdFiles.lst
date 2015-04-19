@@ -1,0 +1,6 @@
+com/mycompany/ars/menuManagement/ApplicationMenu.class
+com/mycompany/ars/appMenu/UserMenuBean.class
+com/mycompany/ars/entity/FlightEJB.class
+com/mycompany/ars/entity/Flight.class
+com/mycompany/ars/menuManagement/ApplicationMenu$MenuType.class
+com/mycompany/ars/entity/FlightController.class
