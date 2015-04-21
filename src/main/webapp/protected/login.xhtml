@@ -22,13 +22,11 @@
                 <h:form id="login" prependId="false">
                     <table>
                         <tr><td>User Name:</td>
-                            <td>  <h:inputText id="username" required="true" value="#{loginBean.credential.username}">
+                            <td>  <h:inputText id="username" required="true" value="#{loginBean.credential.userName}">
                                 </h:inputText>
                             </td></tr>
                         <tr><td>Password:</td>
                             <td><h:inputSecret id="password" value="#{loginBean.credential.password}"/></td></tr>
-                        <tr><td>Access Code:</td>
-                            <td><h:inputSecret id="accessCode" value="#{loginBean.accessCode}"/></td></tr>
                         <tr><td></td><td>
                                 <h:commandButton value="Login" action="#{loginBean.doLogin}"/>
                             </td></tr>  
