@@ -8,7 +8,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author bikesh
+ * @author Sujan
  */
 @Named
 @javax.enterprise.context.SessionScoped
