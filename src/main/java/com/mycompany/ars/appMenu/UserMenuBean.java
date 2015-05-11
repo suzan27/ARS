@@ -23,7 +23,6 @@ public class UserMenuBean {
     private MenuModel menuModel;
     private List<ApplicationMenu> menus;
 
-
     @PostConstruct
     private void init() {
         this.menuModel = new DefaultMenuModel();
@@ -47,13 +46,12 @@ public class UserMenuBean {
 //                //logger.info(menu.toString());
 //                parameterSubMenu.addElement(new DefaultMenuItem(menu.getLabel(), "ui-icon-wrench", menu.getUrl()));
 //            }
-
             //For entries
             DefaultSubMenu entriesSubMenu = new DefaultSubMenu("Entries");
             rootLevelMenu.addElement(entriesSubMenu);
             List<ApplicationMenu> entries_menus = this.findApplicationMenuByTypeAndParenCode(ApplicationMenu.MenuType.Entries, app.getCode());
             for (ApplicationMenu menu : entries_menus) {
-               // logger.info(menu.toString());
+                // logger.info(menu.toString());
                 entriesSubMenu.addElement(new DefaultMenuItem(menu.getLabel(), "ui-icon-pencil", menu.getUrl()));
             }
 
@@ -65,7 +63,6 @@ public class UserMenuBean {
 //                //logger.info(menu.toString());
 //                queriesSubMenu.addElement(new DefaultMenuItem(menu.getLabel(), "ui-icon-help", menu.getUrl()));
 //            }
-
             //For Verifications
 //            DefaultSubMenu verificationSubMenu = new DefaultSubMenu("Verifications");
 //            rootLevelMenu.addElement(verificationSubMenu);
@@ -79,8 +76,8 @@ public class UserMenuBean {
     }
 
     private void addTopLevelMenu() {
-        String[] menu_codes = {"User", "Flight", "Others"};
-        String[] menu_levels = {"User Management", "Flight Management", "Others"};
+        String[] menu_codes = {"User", "Flight", "Search", "Others"};
+        String[] menu_levels = {"User Management", "Flight Management", "Search Flight", "Others"};
         int index = 0;
         for (String s : menu_codes) {
             this.menus.add(new ApplicationMenu(s, menu_levels[index], null));
@@ -92,7 +89,8 @@ public class UserMenuBean {
     private void addSubMenu(String[] menu_codes) {
         this.addUserStructure(menu_codes[0]);
         this.addFlightStructure(menu_codes[1]);
-        this.addOtherStructure(menu_codes[2]);
+        this.addSearchFlight(menu_codes[2]);
+        this.addOtherStructure(menu_codes[3]);
     }
 
     private void addUserStructure(String parentCode) {
@@ -102,7 +100,7 @@ public class UserMenuBean {
     }
 
     private void addFlightStructure(String parentCode) {
-        this.menus.add(new ApplicationMenu("branch_manage", "Add Branch", parentCode, "/protected/flight/list.xhtml", " ", ApplicationMenu.MenuType.Entries));
+        this.menus.add(new ApplicationMenu("flight_manage", "Add Flight", parentCode, "/protected/flight/list.xhtml", " ", ApplicationMenu.MenuType.Entries));
 
     }
 
@@ -141,6 +139,10 @@ public class UserMenuBean {
 
     public void setMenus(List<ApplicationMenu> menus) {
         this.menus = menus;
+    }
+
+    private void addSearchFlight(String parentCode) {
+        this.menus.add(new ApplicationMenu("search_flight", "Search Flight", parentCode, "/protected/flight/searchUI.xhtml", " ", ApplicationMenu.MenuType.Entries));
     }
 
 }
