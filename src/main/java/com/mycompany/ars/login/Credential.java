@@ -3,7 +3,7 @@ package com.mycompany.ars.login;
 
 /**
  *
- * @author bikesh
+ * @author Sujan
  */
 public class Credential {
     
