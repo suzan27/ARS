@@ -29,6 +29,7 @@
                             <td><h:inputSecret id="password" value="#{loginBean.credential.password}"/></td></tr>
                         <tr><td></td><td>
                                 <h:commandButton value="Login" action="#{loginBean.doLogin}"/>
+                                <h:link value="Register" outcome="register.xhtml"/>
                             </td></tr>  
                     </table>
                 </h:form>

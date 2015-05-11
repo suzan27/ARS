@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>:: ARS ::</title>
+        <link rel="shortcut icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+        <meta name="Viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/style.css"/>
+        <!--Calender-->
+    </h:head>
+    <h:body>
+
+        <!--<div class="wrapr">-->
+        <!-- HEADER-SEC -->
+
+        <header id="hdr">  
+        </header>
+
+        <div class="clear"></div>   
+
+        <article class="cms">
+            <div class="wrapr">
+                <div class="signup_msg">
+                    <h:messages globalOnly="true"/>
+                </div>
+                <h1 class="mrgin">Register now</h1>
+                <h:form prependId="false" id="signup_form" class="frm_sec">
+                    <ul>
+                        <li>
+                            <label> First Name* </label>
+                            <h:inputText required="true"  id="fname" value="#{registerBean.cust.lastName}" /> 
+                            <h:message class="error" for="fname"/>
+                        </li>
+
+                        <li>
+                            <label> Last Name* </label>
+                            <h:inputText required="true" id="lname" value="#{registerBean.cust.lastName}"/> 
+                            <h:message class="error" for="lname"/>
+                        </li>
+                        <div class="clear"></div>
+                        <li>
+                            <label> Email Address* </label>
+                            <h:inputText required="true" id="email" value="#{registerBean.cust.emailId}" /> 
+                            <h:message class="error" for="email"/>
+                        </li>
+                        <li>
+                            <label> Mobile No.* </label>
+                            <h:inputText required="true" id="mobile" value="#{registerBean.cust.phoneNo}"/> 
+                            <h:message class="error" for="mobile"/>
+                        </li>
+
+                        <div class="clear">Address</div>
+                        <li>
+                            <label> Street* </label>
+                            <h:inputText required="true" id="street" value="#{registerBean.cust.streetName}"/> 
+                            <h:message class="error" for="street"/>
+                        </li>
+                        <li>
+                            <label> Suburb* </label>
+                            <h:inputText required="true" id="suburb" value="#{registerBean.cust.suburb}"/> 
+                            <h:message class="error" for="suburb"/>
+                        </li>
+                        <li>
+                            <label> Postcode* </label>
+                            <h:inputText required="true" id="postcode" value="#{registerBean.cust.postCode}"/> 
+                            <h:message class="error" for="postcode"/>
+                        </li>
+                        <li>
+                            <label> State* </label>
+                            <h:selectOneMenu required="true" id="zone" value="#{registerBean.cust.states}">
+                                <f:selectItem itemLabel="Select" noSelectionOption="true" />  
+                                <f:selectItem itemValue="Queensland" itemLabel="Qld"/>
+                            </h:selectOneMenu>
+                            <h:message class="error" for="zone"/>
+                        </li>
+                        <li>
+                            <label> City* </label>
+                            <h:selectOneMenu required="true" id="district" value="#{registerBean.cust.city}" >
+                                <f:selectItem itemLabel="Select" noSelectionOption="true" /> 
+                                <f:selectItem itemValue="Brisbane" itemLabel="BNE"/>
+                            </h:selectOneMenu>
+                            <h:message class="error" for="district" />
+                        </li>
+                        <!--                        <li>
+                                                    <label> Date of Birthday [dd/mm/yyyy]* </label>
+                                                    <p:calendar styleClass="dob" required="true" id="dob" valu" pattern="dd/MM/yyyy" navigator="true" yearRange="-100" style="width: 200px; margin: 0; padding: 2px 3px;"/>
+                                                    <h:message class="error" for="dob"/>
+                                                </li>-->
+                        <li class="full">
+                            <p class="radio_area"><input type="checkbox" id="chk" required="true" class="chk" />
+                                I confirm the information provided above are correct and my own. I also, hereby, agree to the terms and conditions set by onlinepayment.com.np. </p>
+                            <h:message class="err" for="chk" />
+                        </li>
+                        <!--
+                        <li class="full capcha">
+                            <label> Captcha : </label>
+                            <figure><img src="#{request.contextPath}/resources/images/capcha.jpg" alt="capcha image" /></figure>
+                            <input type="text" value="Enter a code" 
+                                   onBlur="if (this.value == '') {
+                                        this.value = 'Enter a code'
+                                    }" onFocus="if (this.value == 'Enter a code') {
+                                        this.value = ''
+                                    }" />
+                        </li>
+                        -->
+                        <li class="full">
+                            <h:commandButton  id="saveButton" value="Get Registered" action="#{registerBean.createCustomer()}"/>
+                        </li>
+
+                    </ul>
+                </h:form>
+
+
+            </div>
+            <div class="clear"></div>
+        </article>
+
+        <div class="clear"></div> 
+        <footer id="ftr">
+            <div class="wrapr">
+
+
+
+
+                <div class="clear"></div>
+            </div>
+        </footer>
+
+    </h:body>
+</html>

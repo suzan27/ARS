@@ -6,28 +6,28 @@
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/WEB-INF/template/template.xhtml">
         <ui:define name="content">
-            <h1>Inside Add New Flighht</h1>
+            <h1>Flight List</h1>
             <p:dataTable var="flights" value="#{flightController.flightList}" id="fable">
                 <p:column style="width: 7%;" headerText="Flight No">
                     <h:outputText value="#{flights.flightNo}" />
                 </p:column>
-                <p:column style="width: 15%" headerText="Bank Name">
-                    <h:outputText value="#{flights.flightNo}" />
+                <p:column style="width: 15%" headerText="Departure From">
+                    <h:outputText value="#{flights.depatureFrom}" />
                 </p:column>
 
-                <p:column style="width: 25%" headerText="Branch">
-                    <h:outputText value="#{flights.flightNo}" />
+                <p:column style="width: 15%" headerText="Arrival To">
+                    <h:outputText value="#{flights.arrivalTo}" />
                 </p:column>
 
-                <p:column style="width: 7%" headerText="Account Type">
-                    <h:outputText value="#{flights.flightNo}" />
+                <p:column style="width: 7%" headerText="Departure Date">
+                    <h:outputText value="#{flights.departureDate}" />
                 </p:column>
-                <p:column style="width: 10%" headerText="Current Balance">
-                    <h:outputText value="#{flights.flightNo}"/>
+                <p:column style="width: 10%" headerText="Departure time">
+                    <h:outputText value="#{flights.takeOffTime}"/>
                 </p:column>
             </p:dataTable>
             <h:form>
-                <h:link outcome="manage.xhtml" value="Add new Customer"/>
+                <h:link outcome="manage.xhtml" value="Add new Flight"/>
             </h:form>
         </ui:define>
     </ui:composition>
