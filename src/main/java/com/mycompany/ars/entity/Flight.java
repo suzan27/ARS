@@ -7,12 +7,14 @@
 package com.mycompany.ars.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -32,9 +34,18 @@ public class Flight implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String flightNo;
-    private int noOfSeats;
+    private int capacity;
     private String depatureFrom;
     private String arrivalTo;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date departureDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date arrivalDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date takeOffTime;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date landingTime;
+    
 
     public Long getId() {
         return id;
@@ -84,17 +95,17 @@ public class Flight implements Serializable {
     }
 
     /**
-     * @return the noOfSeats
+     * @return the capacity
      */
-    public int getNoOfSeats() {
-        return noOfSeats;
+    public int getCapacity() {
+        return capacity;
     }
 
     /**
-     * @param noOfSeats the noOfSeats to set
+     * @param noOfSeats the capacity to set
      */
-    public void setNoOfSeats(int noOfSeats) {
-        this.noOfSeats = noOfSeats;
+    public void setCapacity(int noOfSeats) {
+        this.capacity = noOfSeats;
     }
 
     /**
@@ -123,6 +134,62 @@ public class Flight implements Serializable {
      */
     public void setArrivalTo(String arrivalTo) {
         this.arrivalTo = arrivalTo;
+    }
+
+    /**
+     * @return the departureDate
+     */
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    /**
+     * @param departureDate the departureDate to set
+     */
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    /**
+     * @return the arrivalDate
+     */
+    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+
+    /**
+     * @param arrivalDate the arrivalDate to set
+     */
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    /**
+     * @return the takeOffTime
+     */
+    public Date getTakeOffTime() {
+        return takeOffTime;
+    }
+
+    /**
+     * @param takeOffTime the takeOffTime to set
+     */
+    public void setTakeOffTime(Date takeOffTime) {
+        this.takeOffTime = takeOffTime;
+    }
+
+    /**
+     * @return the landingTime
+     */
+    public Date getLandingTime() {
+        return landingTime;
+    }
+
+    /**
+     * @param landingTime the landingTime to set
+     */
+    public void setLandingTime(Date landingTime) {
+        this.landingTime = landingTime;
     }
     
 }
