@@ -23,7 +23,7 @@ public class LoginBean implements Serializable{
 
     public String doLogin() {
         HttpUtils.createHttpSession(new Identity(this.credential.getUserName()));
-        return "home.xhtml?faces-redirect=true";
+        return "protected/home.xhtml?faces-redirect=true";
     }
 
     public Credential getCredential() {
