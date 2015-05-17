@@ -1,6 +1,5 @@
 package com.mycompany.ars.login;
 
-import com.mycompany.ars.utils.HttpUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        HttpUtils.logout(req);
         res.sendRedirect(req.getContextPath());
     }
 

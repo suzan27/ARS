@@ -52,9 +52,4 @@ public class HttpUtils {
         return Identity.createDefaultInstacne();
     }
 
-    public static void logout(HttpServletRequest request) {
-        request.getSession(false).setAttribute(Identity.SESSION_KEY, null);
-        request.getSession().invalidate();
-    }
-
 }
