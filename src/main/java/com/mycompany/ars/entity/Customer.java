@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ars.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +21,18 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findAllCustomer", query = "SELECT c FROM Customer c"),
+    @NamedQuery(name = "findByUserId", query = "SELECT c FROM Customer c where c.emailId=:userId"),
     @NamedQuery(name = "findCustomerWithId", query = "select c from Customer c where c.id = :cId")
 
 })
+/**
+ * *
+ * Customer Entity Class
+ */
 public class Customer implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String streetName;
@@ -38,13 +42,18 @@ public class Customer implements Serializable {
     private String city;
     private String emailId;
     private String phoneNo;
-          
 
-    public Long getId() {
+    /**
+     *
+     * @return
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -160,6 +169,7 @@ public class Customer implements Serializable {
     /**
      * @return the emailId
      */
+    @Column(unique = true)
     public String getEmailId() {
         return emailId;
     }
@@ -192,5 +202,5 @@ public class Customer implements Serializable {
     public void setStates(String states) {
         this.states = states;
     }
-    
+
 }

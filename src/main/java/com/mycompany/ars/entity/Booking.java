@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
@@ -19,21 +21,34 @@ import javax.persistence.Temporal;
  * @author Sujan
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findAllBooking", query = "SELECT b FROM Booking b"),
+    @NamedQuery(name = "findBookingWithId", query = "SELECT b from Booking b where b.id = :bId"),
+    @NamedQuery(name="findBookingDoneByUser", query = "SELECT b FROM Booking b where b.customerId= :bCustomerId and b.isActive=1")
+       
+
+})
+/***
+ * Booking Entity Class
+ */
 public class Booking implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
+    private String flightId;
+    private String customerId;
     private int noOfTicket;
+    private boolean isActive;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date bookingDate;
     private String ticketClass;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -102,6 +117,48 @@ public class Booking implements Serializable {
      */
     public void setTicketClass(String ticketClass) {
         this.ticketClass = ticketClass;
+    }
+
+    /**
+     * @return the flightId
+     */
+    public String getFlightId() {
+        return flightId;
+    }
+
+    /**
+     * @param flightId the flightId to set
+     */
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
+    /**
+     * @return the customerId
+     */
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    /**
+     * @param customerId the customerId to set
+     */
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    /**
+     * @return the isActive
+     */
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
     
 }

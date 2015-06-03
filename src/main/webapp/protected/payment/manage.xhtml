@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/tcal.css" />
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/tcal.js"></script> 
+        <!--News-up-sown-->  
+        <!-- LAYOUT v 1.3.0 -->
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery-latest.js"></script>
+    </h:head>
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <f:viewParam name="id" value="#{paymentController.selectedId}" />
+        <ui:define name="content">
+            <h:form id="paymentManage" prependId="false">
+                <p:panel style="border: none;" id="paymentManage_Panel">
+                    <f:facet name="header">
+                        <label>Booking>>Payment</label>
+                    </f:facet> 
+                    <h:panelGrid columns="3"  style="border: none;" id="paymentManage_panelgrid">
+                        <h:outputLabel id="lblNoOfTicket" value="No of Ticket" rendered="true" for="noOfTicket"/>
+                        <h:inputText id="noOfTicket" value="#{bookingController.booking.noOfTicket}" readonly="true"/>
+                        <h:message id="inNoOfTicket" for="noOfTicket"/>
+
+                        <h:outputLabel id="lblTickClass" value="Ticket Class" rendered="true" for="tickClass"/>
+                        <p:selectOneMenu required="true" id="tickClass"  value="#{bookingController.ticketClass}" >
+                            <p:ajax event="keyup" update="amount" listener="#{bookingController.handleKeyEvent}"/>
+                            <f:selectItem itemLabel="Select" noSelectionOption="true" />  
+                            <f:selectItem itemValue="Economy" itemLabel="Economy"/>
+                            <f:selectItem itemValue="Business" itemLabel="Business"/>
+                        </p:selectOneMenu >
+                        <h:message id="inTickClass" class="error" for="tickClass"/>
+
+                        <h:outputLabel id="lblAmount" value="Amount" rendered="true" for="amount"/>
+                        <h:inputText id="amount" value="#{bookingController.text}" />
+                        <h:message id="inAmount" for="amount"/>
+
+                        <h:outputLabel id="lblbookingDate" value="Booking Date" rendered="true" for="bookingDate"/>
+                        <h:inputText id="bookingDate" value="#{bookingController.booking.bookingDate}" readonly="true" >
+                            <f:convertDateTime type="date" pattern="yyyy/MM/dd"/></h:inputText>
+                        <h:message id="inBookingDate" for="bookingDate"/>
+
+                        <h:commandButton id="saveButton" action="#{paymentController.createPayment()}" value="Book Ticket"/>
+
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

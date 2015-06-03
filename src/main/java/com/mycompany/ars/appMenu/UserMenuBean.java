@@ -14,10 +14,13 @@ import org.primefaces.model.menu.MenuModel;
 
 /**
  *
- * @author bikesh
+ * @author sujan
  */
 @Named
 @RequestScoped
+/***
+ * Menu Control
+ */
 public class UserMenuBean {
 
     private MenuModel menuModel;
@@ -76,8 +79,8 @@ public class UserMenuBean {
     }
 
     private void addTopLevelMenu() {
-        String[] menu_codes = {"User", "Flight", "Search", "Others"};
-        String[] menu_levels = {"User Management", "Flight Management", "Search Flight", "Others"};
+        String[] menu_codes = {"User","Airline", "Flight", "Search", "Others"};
+        String[] menu_levels = {"User Management","Airline Management", "Flight Management", "Search Flight", "Others"};
         int index = 0;
         for (String s : menu_codes) {
             this.menus.add(new ApplicationMenu(s, menu_levels[index], null));
@@ -88,15 +91,21 @@ public class UserMenuBean {
 
     private void addSubMenu(String[] menu_codes) {
         this.addUserStructure(menu_codes[0]);
-        this.addFlightStructure(menu_codes[1]);
-        this.addSearchFlight(menu_codes[2]);
-        this.addOtherStructure(menu_codes[3]);
+        this.addAirlineStructure(menu_codes[1]);
+        this.addFlightStructure(menu_codes[2]);
+        this.addSearchFlight(menu_codes[3]);
+        this.addOtherStructure(menu_codes[4]);
     }
 
     private void addUserStructure(String parentCode) {
 
-        this.menus.add(new ApplicationMenu("user_manage", "Add User", parentCode, "/protected/users/user_add.xhtml", " ", ApplicationMenu.MenuType.Entries));
+        this.menus.add(new ApplicationMenu("user_manage", "Profiles", parentCode, "/protected/customer/list.xhtml", " ", ApplicationMenu.MenuType.Entries));
+        this.menus.add(new ApplicationMenu("user_manage", "My Bookings", parentCode, "/protected/booking/list.xhtml", " ", ApplicationMenu.MenuType.Entries));
 
+    }
+    
+    private void addAirlineStructure(String parentCode) {
+        this.menus.add(new ApplicationMenu("airline_manage", "Add Airlines", parentCode, "/protected/airlines/list.xhtml", " ", ApplicationMenu.MenuType.Entries));
     }
 
     private void addFlightStructure(String parentCode) {

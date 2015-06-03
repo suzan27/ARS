@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ars.entity;
 
 import java.io.Serializable;
@@ -21,10 +20,15 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findAllUser", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "findUserWithId", query = "select u from Users u where u.userName = :uName and u.password = :uPassword")
+    @NamedQuery(name = "findUserWithParam", query = "SELECT u FROM Users u where u.userName = :uName and u.password = :uPassword"),
+    @NamedQuery(name = "findByUsername", query = "SELECT u FROM Users u where u.userName=:uName")
 
 })
+/***
+ * User Entity Class
+ */
 public class Users implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -107,5 +111,5 @@ public class Users implements Serializable {
     public void setRoles(String roles) {
         this.roles = roles;
     }
-    
+
 }

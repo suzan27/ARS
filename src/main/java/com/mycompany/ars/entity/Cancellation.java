@@ -11,17 +11,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Sujan
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findAllCancellation", query = "SELECT c FROM Cancellation c"),
+    @NamedQuery(name = "findCancellationWithId", query = "SELECT c from Cancellation c where c.id = :cId")
+
+})
+/***
+ * Cancellation Entity Class
+ */
 public class Cancellation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String bookingId;
     private double refundAmount;
 
     public Long getId() {

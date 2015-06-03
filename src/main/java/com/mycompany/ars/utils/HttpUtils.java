@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author bikesh
+ * @author Sujan
  */
 public class HttpUtils {
 

@@ -11,17 +11,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Sujan
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findAllPayment", query = "SELECT p FROM Payment p"),
+    @NamedQuery(name = "findPaymentWithId", query = "SELECT p from Payment p where p.id = :pId")
+
+})
+/***
+ * Payment Entity Class
+ */
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String bookingId;
     private double amount;
     private String paymentType;
 
@@ -84,6 +95,20 @@ public class Payment implements Serializable {
      */
     public void setPaymentType(String paymentType) {
         this.paymentType = paymentType;
+    }
+
+    /**
+     * @return the bookingId
+     */
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    /**
+     * @param bookingId the bookingId to set
+     */
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
     
 }

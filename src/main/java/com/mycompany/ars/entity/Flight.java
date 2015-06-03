@@ -28,11 +28,15 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "findFlightWithId", query = "select f from Flight f where f.id = :fId")
 
 })
+/***
+ * Flight Entity Class
+ */
 public class Flight implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
+    private String airlinesId;
     private String flightNo;
     private int capacity;
     private String depatureFrom;
@@ -47,11 +51,11 @@ public class Flight implements Serializable {
     private Date landingTime;
     
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -190,6 +194,20 @@ public class Flight implements Serializable {
      */
     public void setLandingTime(Date landingTime) {
         this.landingTime = landingTime;
+    }
+
+    /**
+     * @return the airlinesId
+     */
+    public String getAirlinesId() {
+        return airlinesId;
+    }
+
+    /**
+     * @param airlinesId the airlinesId to set
+     */
+    public void setAirlinesId(String airlinesId) {
+        this.airlinesId = airlinesId;
     }
     
 }
